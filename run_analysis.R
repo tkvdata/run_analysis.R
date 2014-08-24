@@ -38,7 +38,7 @@ ytrain.test <- rbind(ytrain,ytest)
 names(ytrain.test)[1] <- "ActivityLabelID"
 
 # combine test and train for subject
-sstrain.test <- rbind(strain,stest)
+strain.test <- rbind(strain,stest)
 names(strain.test)[1] <- "Subject"
 
 
@@ -54,7 +54,7 @@ ytrain.test.activity <- merge(ytrain.test,activitylabel, by=1)
 datamerge <- cbind(strain.test, ytrain.test.activity, xtrain.test.mean.std)
 
 # Creates a second, independent tidy data set 
-# average of each variable for each activity andeach subject.
+# average of each variable for each activity and each subject.
 # (#5)
 datamelt = melt(datamerge, id.var = c("ActivityLabelID", "ActivityLabel", "Subject"))
 data.average = dcast(datamelt , Subject + ActivityLabel ~ variable, mean)
